@@ -1,0 +1,11 @@
+services:
+    web:
+        labels:
+            # Frontend
+            - "traefik.enable=true"
+            - "traefik.http.routers.akinek.rule=Host(`akinek.local`)"
+            - 'traefik.http.routers.akinek.entrypoints=web'
+            - 'traefik.http.routers.akinek.tls=false'
+            - "traefik.http.services.akinek.loadbalancer.server.port=80"
+            - "traefik.http.routers.akinek.service=akinek"
+        restart: unless-stopped

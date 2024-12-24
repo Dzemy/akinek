@@ -1,0 +1,12 @@
+services:
+    web:
+        labels:
+            # Frontend
+            - "traefik.enable=true"
+            - "traefik.http.routers.akinek.rule=Host(`akinek.cz`)"
+            - 'traefik.http.routers.akinek.entrypoints=websecure'
+            - 'traefik.http.routers.akinek.tls=true'
+            - 'traefik.http.routers.akinek.tls.certresolver=letsencrypt'
+            - "traefik.http.services.akinek.loadbalancer.server.port=80"
+            - "traefik.http.routers.akinek.service=akinek"
+        restart: always
